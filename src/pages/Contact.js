@@ -6,6 +6,9 @@ const ContactPage = () => {
   const [status, setStatus] = useState("");
   const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
 
+  // Use the REACT_APP_API_URL environment variable
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -13,7 +16,7 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/sendEmail", {
+      const response = await fetch(`${API_URL}/api/sendEmail`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -150,5 +153,4 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
-
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { ThemeContext } from '../context/ThemeContext';
@@ -10,9 +10,12 @@ function Projects() {
   const [categories, setCategories] = useState([]);
   const { theme } = useContext(ThemeContext); // Access theme from ThemeContext
 
+  // Determine the API URL based on environment
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
   useEffect(() => {
     axios
-      .get('http://localhost:5000/projects')
+      .get(`${API_URL}/projects`)
       .then((response) => {
         setProjects(response.data);
         setFilteredProjects(response.data);
@@ -20,7 +23,7 @@ function Projects() {
         setCategories(uniqueCategories);
       })
       .catch((error) => console.error('Error fetching projects:', error));
-  }, []);
+  }, [API_URL]);
 
   const handleSearch = (e) => {
     const term = e.target.value.toLowerCase();
@@ -132,6 +135,7 @@ function Projects() {
 }
 
 export default Projects;
+
 
 
 
