@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for smooth animations */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+body.light {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+body.dark {
+  background-color: #1A1A2E;
+  color: #FFFFFF;
+}
+
+button {
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #E64A19;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease-in-out;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #FF5722;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: all 0.1s ease-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
